@@ -1,0 +1,136 @@
+.dashboard-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #1f2937;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+  background: #172554;
+  color: white;
+  padding: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.dashboard-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #dbeafe;
+}
+
+.logout-btn {
+  background: white;
+  color: #172554;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 35px 25px;
+}
+
+.dashboard-container h2 {
+  margin-bottom: 8px;
+}
+
+.dashboard-subtitle {
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card h3 {
+  font-size: 16px;
+  color: #475569;
+}
+
+.dashboard-card h2 {
+  font-size: 32px;
+  color: #172554;
+  margin: 15px 0;
+}
+
+.dashboard-card p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.dashboard-section {
+  background: white;
+  padding: 25px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.quick-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.quick-actions button {
+  background: #172554;
+  color: white;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.empty-products {
+  background: #f8fafc;
+  padding: 25px;
+  border-radius: 8px;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 20px;
+  }
+
+  .dashboard-container {
+    padding: 25px 15px;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
