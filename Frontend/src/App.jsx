@@ -5,12 +5,12 @@ import Dashboard from "./Dashboard.jsx";
 
 function App() {
   const [showRegister, setShowRegister] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [showDashboard, setShowDashboard] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -18,8 +18,33 @@ function App() {
       return;
     }
 
-    setMessage("Login successful!");
-setShowDashboard(true);
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        }
+      );
+
+      const result = await response.text();
+
+      if (result === "Login successful!") {
+        setMessage("Login successful!");
+        setShowDashboard(true);
+      } else {
+        setMessage(result);
+      }
+    } catch (error) {
+      setMessage("Backend connection failed");
+      console.error(error);
+    }
   };
 
   if (showRegister) {
@@ -29,21 +54,18 @@ setShowDashboard(true);
       />
     );
   }
+
   if (showDashboard) {
-  return <Dashboard />;
-}
+    return <Dashboard />;
+  }
 
   return (
     <div className="login-page">
-
       <div className="login-card">
 
-        <div className="logo">
-          🛡️
-        </div>
+        <div className="logo">🛡️</div>
 
         <h1>Product Warranty</h1>
-
         <h2>Registration Portal</h2>
 
         <p className="welcome">
@@ -73,9 +95,7 @@ setShowDashboard(true);
           />
 
           <div className="forgot">
-            <a href="#">
-              Forgot Password?
-            </a>
+            <a href="#">Forgot Password?</a>
           </div>
 
           <button type="submit">
@@ -108,11 +128,9 @@ setShowDashboard(true);
           >
             {" "}Register Here
           </button>
-
         </p>
 
       </div>
-
     </div>
   );
 }
