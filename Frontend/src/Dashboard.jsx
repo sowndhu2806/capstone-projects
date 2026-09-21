@@ -23,6 +23,14 @@ function Dashboard() {
 
   const today = new Date();
 
+  const alerts = products.filter((product) => {
+    const endDate = new Date(product.warrantyEndDate);
+    const difference =
+      (endDate - today) / (1000 * 60 * 60 * 24);
+
+    return difference < 0 || (difference >= 0 && difference <= 30);
+  });
+
   const activeWarranties = products.filter((product) => {
     const endDate = new Date(product.warrantyEndDate);
     return endDate >= today;
@@ -76,6 +84,26 @@ function Dashboard() {
       </header>
 
       <main className="dashboard-container">
+
+        {alerts.length > 0 && (
+          <div className="warranty-alert">
+            <h3>⚠️ Warranty Alert</h3>
+
+            {alerts.map((product) => {
+              const endDate = new Date(product.warrantyEndDate);
+              const difference =
+                (endDate - today) / (1000 * 60 * 60 * 24);
+
+              return (
+                <p key={product.productId}>
+                  {difference < 0
+                    ? `🔴 ${product.productName} warranty has expired.`
+                    : `🟡 ${product.productName} warranty will expire soon.`}
+                </p>
+              );
+            })}
+          </div>
+        )}
 
         <h2>Welcome to Dashboard!</h2>
 

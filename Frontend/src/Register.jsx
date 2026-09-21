@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Register() {
+function Register({ goToLogin }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,19 +11,22 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName,
-          email,
-          password,
-          phoneNumber,
-          address: "",
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:8080/api/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName,
+            email,
+            password,
+            phoneNumber,
+            address: "",
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Registration failed");
@@ -35,6 +38,10 @@ function Register() {
       setEmail("");
       setPassword("");
       setPhoneNumber("");
+
+      setTimeout(() => {
+        goToLogin();
+      }, 1000);
 
     } catch (error) {
       setMessage("Registration failed. Please try again.");
@@ -50,6 +57,7 @@ function Register() {
         <h2>Warranty Portal</h2>
 
         <form onSubmit={handleRegister}>
+
           <label>Full Name</label>
           <input
             type="text"
@@ -86,10 +94,17 @@ function Register() {
             required
           />
 
-          <button type="submit">Register</button>
+          <button type="submit">
+            Register
+          </button>
+
         </form>
 
-        {message && <p className="message">{message}</p>}
+        {message && (
+          <p className="message">
+            {message}
+          </p>
+        )}
 
       </div>
     </div>

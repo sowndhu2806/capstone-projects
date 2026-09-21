@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import "./RegisterProduct.css";
 
 function RegisterProduct({ goToDashboard }) {
-
   const [productName, setProductName] = useState("");
   const [brandName, setBrandName] = useState("");
   const [serialNumber, setSerialNumber] = useState("");
@@ -41,7 +41,6 @@ function RegisterProduct({ goToDashboard }) {
       setSerialNumber("");
       setStartDate("");
       setEndDate("");
-
     } catch (error) {
       setMessage("Product registration failed");
       console.error(error);
@@ -51,34 +50,38 @@ function RegisterProduct({ goToDashboard }) {
   return (
     <div className="register-page">
 
-      <h1>Register Product</h1>
+      <h1>Register New Product</h1>
 
       <form onSubmit={handleRegisterProduct}>
 
+        <label>Product Name</label>
         <input
           type="text"
-          placeholder="Product Name"
+          placeholder="Enter product name"
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
           required
         />
 
+        <label>Brand Name</label>
         <input
           type="text"
-          placeholder="Brand Name"
+          placeholder="Enter brand name"
           value={brandName}
           onChange={(e) => setBrandName(e.target.value)}
           required
         />
 
+        <label>Product Serial Number</label>
         <input
           type="text"
-          placeholder="Product Serial Number"
+          placeholder="Enter serial number"
           value={serialNumber}
           onChange={(e) => setSerialNumber(e.target.value)}
           required
         />
 
+        <label>Warranty Start Date</label>
         <input
           type="date"
           value={startDate}
@@ -86,6 +89,7 @@ function RegisterProduct({ goToDashboard }) {
           required
         />
 
+        <label>Warranty End Date</label>
         <input
           type="date"
           value={endDate}

@@ -1,0 +1,155 @@
+.warranty-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.warranty-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.warranty-header h1 {
+  color: #173b70;
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.warranty-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+.warranty-card {
+  background: white;
+  width: 95%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.warranty-card h2 {
+  color: #173b70;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.warranty-table {
+  width: 100%;
+  min-width: 1150px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+.warranty-table th {
+  background: #173b70;
+  color: white;
+  padding: 18px 25px;
+  text-align: center;
+  border-right: 1px solid #ffffff55;
+  white-space: nowrap;
+}
+
+.warranty-table td {
+  padding: 20px 25px;
+  text-align: center;
+  border-bottom: 1px solid #d9dee7;
+  border-right: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.warranty-table th:last-child,
+.warranty-table td:last-child {
+  border-right: none;
+}
+
+/* Column spacing */
+.warranty-table th:nth-child(1),
+.warranty-table td:nth-child(1) {
+  width: 7%;
+}
+
+.warranty-table th:nth-child(2),
+.warranty-table td:nth-child(2) {
+  width: 17%;
+}
+
+.warranty-table th:nth-child(3),
+.warranty-table td:nth-child(3) {
+  width: 13%;
+}
+
+.warranty-table th:nth-child(4),
+.warranty-table td:nth-child(4) {
+  width: 17%;
+}
+
+.warranty-table th:nth-child(5),
+.warranty-table td:nth-child(5) {
+  width: 15%;
+}
+
+.warranty-table th:nth-child(6),
+.warranty-table td:nth-child(6) {
+  width: 15%;
+}
+
+.warranty-table th:nth-child(7),
+.warranty-table td:nth-child(7) {
+  width: 16%;
+}
+
+.warranty-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.status {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status.expired {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.empty-message {
+  text-align: center;
+  color: #777;
+  padding: 30px;
+}
+
+.back-dashboard-btn {
+  display: block;
+  margin: 25px auto 0;
+  padding: 11px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #173b70;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.back-dashboard-btn:hover {
+  background: #0f2d58;
+}
