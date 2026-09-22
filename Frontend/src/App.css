@@ -73,18 +73,54 @@ body {
   border-color: #315d96;
 }
 
-.forgot {
-  text-align: right;
-  margin-bottom: 20px;
+/* Password box */
+.password-box {
+  position: relative;
+  width: 100%;
 }
 
-.forgot a {
+/* Password input */
+.password-box input {
+  width: 100%;
+  padding: 13px 50px 13px 13px;
+  margin-bottom: 18px;
+}
+
+/* Eye button */
+.password-box .password-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: #173b70;
+
+  font-size: 19px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Eye button hover */
+.password-box .password-toggle:hover {
+  background: #eef4ff;
   color: #315d96;
-  text-decoration: none;
-  font-size: 14px;
 }
 
-.login-card button {
+/* Login button */
+.login-card form > button[type="submit"] {
   width: 100%;
   padding: 13px;
   border: none;
@@ -96,8 +132,19 @@ body {
   cursor: pointer;
 }
 
-.login-card button:hover {
+.login-card form > button[type="submit"]:hover {
   background: #315d96;
+}
+
+.forgot {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgot a {
+  color: #315d96;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .message {

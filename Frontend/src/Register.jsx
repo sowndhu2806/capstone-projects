@@ -5,6 +5,7 @@ function Register({ goToLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleRegister = async (e) => {
@@ -59,6 +60,7 @@ function Register({ goToLogin }) {
         <form onSubmit={handleRegister}>
 
           <label>Full Name</label>
+
           <input
             type="text"
             placeholder="Enter your full name"
@@ -68,6 +70,7 @@ function Register({ goToLogin }) {
           />
 
           <label>Email</label>
+
           <input
             type="email"
             placeholder="Enter your email"
@@ -77,15 +80,29 @@ function Register({ goToLogin }) {
           />
 
           <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+
+          <div className="password-box">
+
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+
+          </div>
 
           <label>Phone Number</label>
+
           <input
             type="tel"
             placeholder="Enter your phone number"

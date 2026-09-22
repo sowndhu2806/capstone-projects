@@ -22,42 +22,76 @@ function WarrantyDetails({ goToDashboard }) {
       })
       .catch((error) => {
         console.error(error);
-        setMessage("Unable to load warrenty details");
+        setMessage("Unable to load warranty details");
       });
   }, []);
 
-  const getWarrentyStatus = (endDate) => {
+  const getWarrantyStatus = (endDate) => {
     const today = new Date();
-    const warrentyEnd = new Date(endDate);
+    const warrantyEnd = new Date(endDate);
 
-    if (today > warrentyEnd) {
+    if (today > warrantyEnd) {
       return "Expired";
     }
 
     return "Active";
   };
 
-  return (
-    <div className="warrenty-page">
+  const getProductIcon = (productName) => {
+    const name = productName.toLowerCase();
 
-      <div className="warrenty-header">
-        <h1>Warrenty Details</h1>
-        <p>View and manage your registered product warrenties</p>
+    if (name.includes("laptop")) {
+      return "💻";
+    }
+
+    if (
+      name.includes("phone") ||
+      name.includes("mobile") ||
+      name.includes("smartphone")
+    ) {
+      return "📱";
+    }
+
+    if (name.includes("washing")) {
+      return "🧺";
+    }
+
+    if (name.includes("television") || name.includes("tv")) {
+      return "📺";
+    }
+
+    return "📦";
+  };
+
+  return (
+    <div className="warranty-page">
+
+      <div className="warranty-header">
+        <div>
+          <h1>Warranty Details</h1>
+          <p>View and manage your registered product warranties</p>
+        </div>
+
+        <div className="warranty-header-icons">
+          <span>💻</span>
+          <span>📱</span>
+          <span>📺</span>
+        </div>
       </div>
 
-      <div className="warrenty-card">
+      <div className="warranty-card">
 
-        <h2>Product Warrenty Information</h2>
+        <h2>Product Warranty Information</h2>
 
         {products.length > 0 ? (
           <div className="table-container">
 
-            <table className="warrenty-table">
+            <table className="warranty-table">
 
               <thead>
                 <tr>
                   <th>S.No</th>
-                  <th>Product Name</th>
+                  <th>Product</th>
                   <th>Brand</th>
                   <th>Serial Number</th>
                   <th>Start Date</th>
@@ -67,28 +101,49 @@ function WarrantyDetails({ goToDashboard }) {
               </thead>
 
               <tbody>
+
                 {products.map((product, index) => {
 
-                  const status = getWarrentyStatus(
+                  const status = getWarrantyStatus(
                     product.warrantyEndDate
                   );
 
                   return (
                     <tr key={product.productId}>
 
-                      <td>{index + 1}</td>
-
-                      <td>
-                        <strong>{product.productName}</strong>
+                      <td className="serial-cell">
+                        {index + 1}
                       </td>
 
-                      <td>{product.brandName}</td>
+                      <td className="product-cell">
+                        <div className="product-info">
 
-                      <td>{product.serialNumber}</td>
+                          <div className="product-icon">
+                            {getProductIcon(product.productName)}
+                          </div>
 
-                      <td>{product.warrantyStartDate}</td>
+                          <strong>
+                            {product.productName}
+                          </strong>
 
-                      <td>{product.warrantyEndDate}</td>
+                        </div>
+                      </td>
+
+                      <td>
+                        {product.brandName}
+                      </td>
+
+                      <td>
+                        {product.serialNumber}
+                      </td>
+
+                      <td>
+                        {product.warrantyStartDate}
+                      </td>
+
+                      <td>
+                        {product.warrantyEndDate}
+                      </td>
 
                       <td>
                         <span
@@ -98,6 +153,7 @@ function WarrantyDetails({ goToDashboard }) {
                               : "status expired"
                           }
                         >
+                          <span className="status-dot"></span>
                           {status}
                         </span>
                       </td>
@@ -105,6 +161,7 @@ function WarrantyDetails({ goToDashboard }) {
                     </tr>
                   );
                 })}
+
               </tbody>
 
             </table>
@@ -112,7 +169,7 @@ function WarrantyDetails({ goToDashboard }) {
           </div>
         ) : (
           <p className="empty-message">
-            {message || "Loading warrenty details..."}
+            {message || "Loading warranty details..."}
           </p>
         )}
 
