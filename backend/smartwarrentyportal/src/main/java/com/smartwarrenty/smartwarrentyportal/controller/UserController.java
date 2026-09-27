@@ -8,7 +8,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://frontend-production-71eb.up.railway.app"
+})
 public class UserController {
 
     private final UserRepository userRepository;
