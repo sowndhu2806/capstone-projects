@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./WarrantyDetails.css";
+import { API_URL } from "./api.js";
 
 function WarrantyDetails({ goToDashboard }) {
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/products")
+    fetch(`${API_URL}/api/products`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch products");

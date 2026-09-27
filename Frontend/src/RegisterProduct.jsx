@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./RegisterProduct.css";
+import { API_URL } from "./api.js";
 
 function RegisterProduct({ goToDashboard }) {
   const [productName, setProductName] = useState("");
@@ -14,7 +15,7 @@ function RegisterProduct({ goToDashboard }) {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/products/register",
+        `${API_URL}/api/products/register`,
         {
           method: "POST",
           headers: {

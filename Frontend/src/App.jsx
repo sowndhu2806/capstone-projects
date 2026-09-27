@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Register from "./Register.jsx";
 import Dashboard from "./Dashboard.jsx";
+import { API_URL } from "./api.js";
 
 function App() {
   const [showRegister, setShowRegister] = useState(false);
@@ -21,7 +22,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/login",
+        `${API_URL}/api/users/login`,
         {
           method: "POST",
           headers: {

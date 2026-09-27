@@ -2,6 +2,7 @@ import React from "react";
 import "./Dashboard.css";
 import RegisterProduct from "./RegisterProduct.jsx";
 import WarrantyDetails from "./WarrantyDetails.jsx";
+import { API_URL } from "./api.js";
 
 function Dashboard() {
   const [showRegisterProduct, setShowRegisterProduct] = React.useState(false);
@@ -11,7 +12,7 @@ function Dashboard() {
   const [products, setProducts] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("http://localhost:8080/api/products")
+    fetch(`${API_URL}/api/products`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
