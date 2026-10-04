@@ -28,7 +28,9 @@ Product:
 Stores product name, brand name, serial number, warranty start date, and warranty end date.
 Warranty:
 Represents the warranty information and status of registered products.
+
 7. User Roles
+
 User / Customer
 Register and login
 Register products
@@ -36,7 +38,9 @@ View product details
 View warranty details
 Track warranty status
 Check warranty expiry alerts
+
 8. Success Criteria
+
 Easy user registration and login
 Successful product registration
 Accurate storage of product and warranty information
@@ -47,7 +51,9 @@ Correct identification of expired warranties
 Identification of warranties expiring within 30 days
 Automatic warranty alerts
 Dashboard displaying product and warranty statistics
+
 9. Out of Scope
+
 Online payment
 Product sales
 Physical product repair
@@ -55,8 +61,11 @@ Service request management
 SMS OTP verification
 Online purchasing
 Product delivery management
+
 10. Chosen Technology Stack
+
 Frontend:
+
 React.js
 Vite
 JavaScript
